@@ -25,8 +25,8 @@ BATCH_FILES = {}
 async def start(client, message):
     if message.chat.type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         buttons = [[
-                    InlineKeyboardButton('🙋‍♂️𝙾𝚠𝚗𝚎𝚛', url='t.me/benana_assistbot'),
-                    InlineKeyboardButton('🤷𝙰𝙱𝙾𝚄𝚃', callback_data="abt")
+                    InlineKeyboardButton('🙋‍♂️𝙾𝚠𝚗𝚎𝚛', url='t.me/TEAM_SNS_BOT'),
+                    InlineKeyboardButton('🤷𝙰𝙱𝙾𝚄𝚃', url='t.me/SNSxTG')
                   ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply(script.HIT_TXT.format(message.from_user.mention if message.from_user else message.chat.title, temp.U_NAME, temp.B_NAME), reply_markup=reply_markup)
@@ -45,7 +45,7 @@ async def start(client, message):
                     InlineKeyboardButton('🕵️‍♂️ʜᴇʟᴘ', callback_data='help')
                 ],[
                     InlineKeyboardButton('🙋‍♂️𝙾𝚠𝚗𝚎𝚛', url='t.me/benana_assistbot'),
-                    InlineKeyboardButton('🤷𝙰𝙱𝙾𝚄𝚃', callback_data="abt")
+                    InlineKeyboardButton('🤷𝙰𝙱𝙾𝚄𝚃', callback_data="about")
                 ],[
                     InlineKeyboardButton('➕️𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚄𝚁 𝙶𝚁𝙾𝚄𝙿➕️', url=f'http://t.me/{clonedme.U_NAME}?startgroup=true'),
                   ]]
