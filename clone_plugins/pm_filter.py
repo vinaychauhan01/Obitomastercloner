@@ -11,6 +11,7 @@ from Script import script
 import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
     make_inactive
+from plugins.Mods.clone import get_bot, clonedme
 from info import LANGUAGES, ADMINS, AUTH_CHANNEL, AUTH_USERS, SUPPORT_CHAT_ID, CUSTOM_FILE_CAPTION, MSG_ALRT, PICS, AUTH_GROUPS, P_TTI_SHOW_OFF, GRP_LNK, CHNL_LNK, NOR_IMG, LOG_CHANNEL, SPELL_IMG, MAX_B_TN, IMDB, \
     SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, NO_RESULTS_MSG, VERIFY
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaPhoto
@@ -160,7 +161,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
                         text=f"▫️{get_size(file.file_size)} ⊳ {file.file_name}",
                         url=await get_shortlink(
                             message.chat.id,
-                            f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}",
+                            f"https://telegram.me/{clonedme.U_NAME}?start=files_{file.file_id}",
                         ),
                     ),
                 ]
@@ -173,14 +174,14 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
                         text=f"{file.file_name}",
                         url=await get_shortlink(
                             message.chat.id,
-                            f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}",
+                            f"https://telegram.me/{clonedme.U_NAME}?start=files_{file.file_id}",
                         ),
                     ),
                     InlineKeyboardButton(
                         text=f"{get_size(file.file_size)}",
                         url=await get_shortlink(
                             message.chat.id,
-                            f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}",
+                            f"https://telegram.me/{clonedme.U_NAME}?start=files_{file.file_id}",
                         ),
                     ),
                 ]
@@ -259,7 +260,7 @@ async def filter_languages_cb_handler(client: Client, query: CallbackQuery):
         InlineKeyboardButton("Send All !", callback_data=f"send_fall#{pre}#{message.chat.id}-{message.id}#{0}")
     ])
     btn.insert(0, [
-        InlineKeyboardButton("𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚄𝚁 𝙶𝚁𝙿", url=f'http://t.me/{clonedme.U_NAME}?startgroup=true')
+        InlineKeyboardButton("𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚄𝚁 𝙶𝚁𝙿", url=f'http://telegram.me/{clonedme.U_NAME}?startgroup=true')
     ])
     offset = 0
 
@@ -308,7 +309,7 @@ async def next_page(bot, query):
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"📁[{get_size(file.file_size)}] ✦{file.file_name}", url=await get_shortlink(query.message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                        text=f"📁[{get_size(file.file_size)}] ✦{file.file_name}", url=await get_shortlink(query.message.chat.id, f"https://telegram.me/{clonedme.U_NAME}?start=files_{file.file_id}")
                     ),
                 ]
                 for file in files
@@ -317,7 +318,7 @@ async def next_page(bot, query):
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"{file.file_name}", url=await get_shortlink(query.message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                        text=f"{file.file_name}", url=await get_shortlink(query.message.chat.id, f"https://telegram.me/{clonedme.U_NAME}?start=files_{file.file_id}")
                     ),
                     InlineKeyboardButton(
                         text=f"{get_size(file.file_size)}",
@@ -755,11 +756,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         try:
             if AUTH_CHANNEL and not await is_subscribed(client, query):
                 if clicked == typed:
-                    await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+                    await query.answer(url=f"https://telegram.me/{clonedme.U_NAME}?start={ident}_{file_id}")
                     return
             elif settings['botpm']:
                 if clicked == typed:
-                    await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+                    await query.answer(url=f"https://telegram.me/{clonedme.U_NAME}?start={ident}_{file_id}")
                     return
             else:
                 if clicked == typed:
@@ -796,9 +797,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         except UserIsBlocked:
             await query.answer('Uɴʙʟᴏᴄᴋ ᴛʜᴇ ʙᴏᴛ ᴍᴀʜɴ !', show_alert=True)
         except PeerIdInvalid:
-            await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+            await query.answer(url=f"https://telegram.me/{clonedme.U_NAME}?start={ident}_{file_id}")
         except Exception as e:
-            await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+            await query.answer(url=f"https://telegram.me/{clonedme.U_NAME}?start={ident}_{file_id}")
     elif query.data.startswith("checksub"):
         if AUTH_CHANNEL and not await is_subscribed(client, query):
             await query.answer("Jᴏɪɴ ᴏᴜʀ Bᴀᴄᴋ-ᴜᴘ ᴄʜᴀɴɴᴇʟ ᴍᴀʜɴ! 😒", show_alert=True)
@@ -835,7 +836,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer()
         if not await check_verification(client, query.from_user.id) and VERIFY == True:
             btn = [[
-                InlineKeyboardButton("Vᴇʀɪғʏ", url=await get_token(client, query.from_user.id, f"https://telegram.me/{temp.U_NAME}?start=", file_id))
+                InlineKeyboardButton("Vᴇʀɪғʏ", url=await get_token(client, query.from_user.id, f"https://telegram.me/{clonedme.U_NAME}?start=", file_id))
             ]]
             await client.send_message(
                 chat_id=query.from_user.id,
@@ -1001,7 +1002,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         title = query.message.chat.title
         settings = await get_settings(grp_id)
         btn2 = [[
-                 InlineKeyboardButton("Cʜᴇᴄᴋ PM", url=f"t.me/{temp.U_NAME}")
+                 InlineKeyboardButton("Cʜᴇᴄᴋ PM", url=f"t.me/{clonedme.U_NAME}")
                ]]
         reply_markup = InlineKeyboardMarkup(btn2)
         await query.message.edit_text(f"<b>Yᴏᴜʀ sᴇᴛᴛɪɴɢs ᴍᴇɴᴜ ғᴏʀ {title} ʜᴀs ʙᴇᴇɴ sᴇɴᴛ ᴛᴏ ʏᴏᴜʀ PM</b>")
@@ -1714,7 +1715,7 @@ async def auto_filter(client, msg, spoll=False):
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"📁[{get_size(file.file_size)}] ✦{file.file_name}", url=await get_shortlink(message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                        text=f"📁[{get_size(file.file_size)}] ✦{file.file_name}", url=await get_shortlink(message.chat.id, f"https://telegram.me/{clonedme.U_NAME}?start=files_{file.file_id}")
                     ),
                 ]
                 for file in files
@@ -1724,11 +1725,11 @@ async def auto_filter(client, msg, spoll=False):
                 [
                     InlineKeyboardButton(
                         text=f"{file.file_name}",
-                        url=await get_shortlink(message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                        url=await get_shortlink(message.chat.id, f"https://telegram.me/{clonedme.U_NAME}?start=files_{file.file_id}")
                     ),
                     InlineKeyboardButton(
                         text=f"{get_size(file.file_size)}",
-                        url=await get_shortlink(message.chat.id, f"https://telegram.me/{temp.U_NAME}?start=files_{file.file_id}")
+                        url=await get_shortlink(message.chat.id, f"https://telegram.me/{clonedme.U_NAME}?start=files_{file.file_id}")
                     ),
                 ]
                 for file in files
