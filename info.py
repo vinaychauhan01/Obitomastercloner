@@ -13,9 +13,9 @@ def is_enabled(value, default):
 
 # Bot information
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = environ.get('API_ID', '1747534')
-API_HASH = environ.get('API_HASH', '5a2684512006853f2e48aca9652d83ea')
-BOT_TOKEN = environ.get('BOT_TOKEN', '6321629593:AAH4adL0GmkQkcx83BjwvUapFeV0ttLjmUo')
+API_ID = environ.get('API_ID', '21518327')
+API_HASH = environ.get('API_HASH', 'e72f588b3e4763f01eecfc3c4aa7e8ac')
+BOT_TOKEN = environ.get('BOT_TOKEN', '6660202383:AAF0LYNF6xPPuXW38MEHiNWz9vmrT3hfBR8')
 
 #rename
 FLOOD = int(environ.get("FLOOD", "10"))
@@ -31,8 +31,8 @@ MELCOW_VID = environ.get("MELCOW_VID", "https://telegra.ph/file/451f038b4e7c2ddd
 SPELL_IMG = environ.get("SPELL_IMG", "https://telegra.ph/file/5e2d4418525832bc9a1b9.jpg")
 
 # Admins, Channels & Users
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '6206665581').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001913415805').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5741918628').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001839965169').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '6206665581').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 auth_channel = environ.get('AUTH_CHANNEL')
@@ -68,7 +68,7 @@ PORT = environ.get("PORT", "8080")
 GRP_LNK = environ.get('GRP_LNK', 'https://t.me/EDIT_REPO')
 CHNL_LNK = environ.get('CHNL_LNK', 'https://t.me/LSBOTZ_UPDATE')
 MSG_ALRT = environ.get('MSG_ALRT', 'Piracy Is Crime 😌')
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001913415805'))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001839965169'))
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'EDIT_REPO')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
 IMDB = is_enabled((environ.get('IMDB', "False")), False)
