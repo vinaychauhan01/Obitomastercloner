@@ -15,7 +15,7 @@ from datetime import datetime, timedelta, date, time
 import string
 from typing import List
 from database.users_chats_db import db
-from import BeautifulSoup
+from import bs4 BeautifulSoup
 import requests
 import aiohttp
 
